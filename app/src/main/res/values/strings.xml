@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Recent Yu-Gi-Oh MasterDuel banlist</string>
+    <string name="effect">Effect: %s</string>
+
+</resources>
