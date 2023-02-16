@@ -1,23 +1,16 @@
 package com.example.myapplication.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.myapplication.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [DetailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DetailFragment : Fragment() {
 
 
@@ -29,10 +22,19 @@ class DetailFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_detail, container, false)
         if(arguments != null){
             val name = requireArguments().getString("name")
-            val age = requireArguments().getString("effect")
+            val card_image = requireArguments().getString("image")
+            val card_effect = requireArguments().getString("effect")
+            val card_attribute = requireArguments().getString("attribute")
+            val card_border = requireArguments().getString("border")
+            Glide.with(view).load(card_image).into(view.findViewById<ImageView>(R.id.card_image))
             view.findViewById<TextView>(R.id.card_name).text = name
+            view.findViewById<TextView>(R.id.card_attribute).text = card_attribute
+            view.findViewById<TextView>(R.id.card_effect).text = card_effect
+            view.setBackgroundColor(Color.parseColor(card_border))
+
 
         }
+        return view
     }
 
 

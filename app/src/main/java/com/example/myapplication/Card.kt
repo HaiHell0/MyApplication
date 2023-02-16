@@ -1,7 +1,7 @@
 package com.example.myapplication
 
 data class Card (
-    val image: Int,
+    val image: String,
     val name: String,
     val attribute: String,
     val level: Int,

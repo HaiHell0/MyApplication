@@ -21,13 +21,13 @@ class CardAdapter(private val cards:List<Card>): RecyclerView.Adapter<CardAdapte
     private val onItemClick: (adapterPosition: Int)-> Unit
     ):RecyclerView.ViewHolder(itemView){
 
-        val cardName: TextView = itemView.findViewById(R.id.card_name)
-        val attribute : TextView = itemView.findViewById(R.id.card_attribute)
+        //val cardName: TextView = itemView.findViewById(R.id.card_name)
+        //val attribute : TextView = itemView.findViewById(R.id.card_attribute)
         val cardImage  : ImageView = itemView.findViewById(R.id.card_image)
        // val attack: Int,
        // val defense: Int,
-        val type : TextView = itemView.findViewById(R.id.card_type)
-        val cardEffect: TextView = itemView.findViewById(R.id.card_effect)
+       // val type : TextView = itemView.findViewById(R.id.card_type)
+       // val cardEffect: TextView = itemView.findViewById(R.id.card_effect)
        // val border: String,
         init{
             itemView.setOnClickListener{
@@ -44,6 +44,7 @@ class CardAdapter(private val cards:List<Card>): RecyclerView.Adapter<CardAdapte
                 "name" to card.name,
                 "effect" to card.effect,
                 "attribute" to card.attribute,
+                "image" to card.image,
                 //"level" to card.level,
                 //"attack" to card.attack,
                 //"defence" to card.defense,
@@ -66,14 +67,14 @@ class CardAdapter(private val cards:List<Card>): RecyclerView.Adapter<CardAdapte
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        Glide.with(holder.cardImage)
         val card = cards[position]
-        holder.cardName.text = card.name
-        holder.cardImage.setImageResource(card.image)
+        Glide.with(holder.itemView.context).load(card.image).into(holder.cardImage)
+        //holder.cardName.text = card.name
+        //holder.cardImage.setImageResource(card.image)
         //holder.cardEffect.text = getString(R.string.effect, card.effect) R.string.effect.. is type Int?
-        holder.attribute.text = card.attribute
-        holder.type.text = card.type.joinToString("/")
-        holder.cardEffect.text = card.effect
+        //holder.attribute.text = card.attribute
+        //holder.type.text = card.type.joinToString("/")
+        //holder.cardEffect.text = card.effect
         holder.itemView.setBackgroundColor(Color.parseColor(card.border))
 
 
